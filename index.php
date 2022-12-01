@@ -343,16 +343,16 @@
                 </div>
             </form>
             <?php
-                $ahora = new DateTime(date("Y-m-d"));
-                $fecha = isset($_GET['FechaNac']) ? $_GET['FechaNac'] : '';
-                function FechaNacer($fecha_nacimiento)
-                {
-                    $nacimiento = new DateTime($fecha_nacimiento);
-                    global $ahora;
-                    $diferencia =$ahora->diff($nacimiento);
-                    return $diferencia->format("%y");
-                }
-                echo "Nacio el: $fecha y hasta la fecha de hoy, el tiene:  " . FechaNacer($fecha) . " años de edad";
+            $ahora = new DateTime(date("Y-m-d"));
+            $fecha = isset($_GET['FechaNac']) ? $_GET['FechaNac'] : '';
+            function FechaNacer($fecha_nacimiento)
+            {
+                $nacimiento = new DateTime($fecha_nacimiento);
+                global $ahora;
+                $diferencia = $ahora->diff($nacimiento);
+                return $diferencia->format("%y");
+            }
+            echo "Nacio el: $fecha y hasta la fecha de hoy, el tiene:  " . FechaNacer($fecha) . " años de edad";
             ?>
         </section>
         <!-- ========== End Funciones ========== -->
@@ -364,14 +364,15 @@
                 <h5>Ámbito de las variables</h5>
             </div>
             <?php
-                $hora = date("H:i:s");
-                echo " El tiempo actual en el meridiano greenwich +1 es : $hora ";
-                function horaEc(){
-                    global $hora;
-                    $horaM=strtotime('-6 hour', strtotime($hora));
-                    return $horaM = date("H:i:s",$horaM);
-                }
-                echo "La Hora en Ecuador: ".horaEc();
+            $hora = date("H:i:s");
+            echo " El tiempo actual en el meridiano greenwich +1 es : $hora ";
+            function horaEc()
+            {
+                global $hora;
+                $horaM = strtotime('-6 hour', strtotime($hora));
+                return $horaM = date("H:i:s", $horaM);
+            }
+            echo "La Hora en Ecuador: " . horaEc();
             ?>
         </section>
         <!-- ========== End  Ámbito de las variables ========== -->
@@ -383,7 +384,76 @@
                 <h5>Cadena de caracteres</h5>
             </div>
             <?php
+            // --- Uso de cadena de caracteres-----
+            echo "<br>";
+            $cadena = "ABCEDARIO";
+            $cadena2 = "María Fernanda";
+            echo "Valor de la variable 1 es: <b>$cadena</b><br>";
+            echo "Valor de la variable 2 es: <b>$cadena2</b><br>";
+            echo "Caracter en la posicion 3 del arreglo cadena es: $cadena[2]";
+            echo "<br>";
+            echo "cantida de carcateres en la variable es de: " . strlen($cadena2);
+            echo "<br>";
+            echo "cantida de carcateres en la variable 2 es de: " . strlen($cadena2); // NO FUNCIONA CR
+            echo "<br>";
+            echo "cantida de carcateres en la variable 2 en bytes es: " . mb_strlen($cadena2);
+            //-----Posicion de caracter en la cadena----
+            echo "<br><hr><hr><br>";
+            echo "<b>Posicion de caracter en la cadena</b><br>";
+            echo "<br>";
+            echo "posicion de la letra i en la cadena  " . strpos($cadena, "I");
+            //---atras para adelante
+            echo "<br><hr><hr><br>";
+            echo "<b>Posicion de caracter en la cadena de atras para adelante</b><br>";
+            echo "<br>";
+            echo "Posicion de la letra [ i ] en la cadena de atras para adelante es:  " . strrpos($cadena, "I");
 
+            // Compara cadenas
+            echo "<br><hr><hr><br>";
+            echo "<b>Compara cadenas</b><br>";
+            echo "<br>";
+            $cad1 = "Hola Mundo XD";
+            $cad2 = "Hola mundo xd";
+            echo "$cad1<br>";
+            echo "$cad2<br>";
+            if (strcasecmp($cad1, $cad2) == 0) {
+                echo "Las dos cadenas son igules";
+            } else {
+                echo "Las cadenas No son iguales";
+            }
+            $cadena3 = "Hola amigos.... ¿Comó están?";
+            echo "<br><br>Valor de la variable 3 es: <b>$cadena3</b>";
+            echo "<br>";
+            echo "La cadena de caracter [ como ]' : ";
+            echo strpos($cadena3, "como") ? "si existe" :  "no existe";
+            echo "<br>";
+            echo "La cadena de caracter [ Comó ] : ";
+            echo strpos($cadena3, "Comó") ? "si existe" : "no existe";
+            echo "<br><hr><hr><br>";
+            echo "<b>Substraer cadenas</b><br>";
+            echo "<br>";
+            // Substraer cadenas
+            $cade1 = "jimy.calvo@epn.edu.ec";
+            $cade2 = "jimy calvo M";
+            echo "$cade1<br>";
+            echo "$cade2<br>";
+            echo "<br>";
+            echo "1.- Extrer [3]      :   \t" . substr($cade1, 3);
+            echo "<br>";
+            echo "2.- Extrer [3 11]   :  \t" . substr($cade1, 3, 11);
+            echo "<br>";
+            echo "3.- Extrer [-10 ]   : \t" . substr($cade1, -10);
+            echo "<br>";
+            echo "4.- Extrer [-10 3]  : \t" . substr($cade1, -10, 3);
+            echo "<br>";
+            echo "5.- Remplazar       : \t" . str_replace("edu", "net", $cade1);
+            echo "<br>";
+            echo "6.- Capitalizar     : \t" . ucwords($cade2);
+            echo "<br>";
+            echo "7.- Minuscula       :\t" . strtolower($cade2);
+            echo "<br>";
+            echo "8.- Mayuscula      : \t" . strtoupper($cade2);
+            echo "<br> <br>";
             ?>
         </section>
         <!-- ========== End  Cadena de caracteres ========== -->
