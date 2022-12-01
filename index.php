@@ -313,7 +313,11 @@
                 <h5>Repetición</h5>
             </div>
             <?php
-
+            echo "for (\$k=0 ; \$k<20 ; \$k++) ><br>";
+            for ($k = 0; $k < 20; $k++) {
+                echo $k . "<br>";
+            }
+            echo "Fue expulsado del bucle <br> <br>";
             ?>
         </section>
         <!-- ========== End Repetición  ========== -->
@@ -325,7 +329,26 @@
                 <h5>Break y continue</h5>
             </div>
             <?php
+            echo "<b>Breack </b> <br>";
+            echo "for (\$i=0 ; \$i<10 ; \$i++) ><br>";
+            for ($i = 0; $i < 20; $i++) {
+                if ($i == 7) {
+                    break;
+                }
+                echo $i . "<br>";
+            }
+            echo "Fue expulsado del ciclo cuando se cumplio la condicion \$i==7 <br> <br>";
 
+            echo "<hr><hr><br><b>Continue </b> <br>";
+            echo "for (\$k=0 ; \$k<20 ; \$k++) ><br>";
+            for ($k = 0; $k < 20; $k++) {
+                if ($k == 9 || $k == 15) {
+                    echo "Paso por continue  cuando \$k == 9 o \$k == 15 <br>";
+                    continue;
+                }
+                echo $k . "<br>";
+            }
+            echo "Fue expulsado del bucle <br> <br>";
             ?>
         </section>
         <!-- ========== End Break y continue ========== -->
@@ -501,8 +524,21 @@
                 <h5>Funciones para arrays</h5>
             </div>
             <?php
+            $numeros = array(13, 14, 8, 85, 47, 26, 12, 48, 66);
+            function mostraNum($numeros)
+            {
+                foreach ($numeros as $numero)
+                    echo "[  $numero  ]";
+                echo "<br><br>";
+            }
+            echo "Numeros: ";
+            mostraNum($numeros);
+            sort($numeros);
+            echo "Numeros Ordeados: ";
+            mostraNum($numeros);
 
             ?>
+
         </section>
         <!-- ========== End Funciones para arrays ========== -->
 
