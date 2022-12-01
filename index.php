@@ -336,8 +336,23 @@
             <div class="container text-center">
                 <h5>Funciones</h5>
             </div>
+            <form method="GET">
+                <div class="input-group m-2">
+                    <input class="form-control " type="date" name="FechaNac" id="fecna" min="1930-01-01" max="2021-12-31" style="width: 56%;">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+            </form>
             <?php
-
+                $ahora = new DateTime(date("Y-m-d"));
+                $fecha = isset($_GET['FechaNac']) ? $_GET['FechaNac'] : '';
+                function FechaNacer($fecha_nacimiento)
+                {
+                    $nacimiento = new DateTime($fecha_nacimiento);
+                    global $ahora;
+                    $diferencia =$ahora->diff($nacimiento);
+                    return $diferencia->format("%y");
+                }
+                echo "Nacio el: $fecha y hasta la fecha de hoy, el tiene:  " . FechaNacer($fecha) . " años de edad";
             ?>
         </section>
         <!-- ========== End Funciones ========== -->
@@ -349,7 +364,14 @@
                 <h5>Ámbito de las variables</h5>
             </div>
             <?php
-
+                $hora = date("H:i:s");
+                echo " El tiempo actual en el meridiano greenwich +1 es : $hora ";
+                function horaEc(){
+                    global $hora;
+                    $horaM=strtotime('-6 hour', strtotime($hora));
+                    return $horaM = date("H:i:s",$horaM);
+                }
+                echo "La Hora en Ecuador: ".horaEc();
             ?>
         </section>
         <!-- ========== End  Ámbito de las variables ========== -->
@@ -373,12 +395,11 @@
                 <h5>Array unidimensionales</h5>
             </div>
             <?php
-                 $musica = array('electroica'=>'David Getta', 'Salasa'=>'Marti Almar','Rege' =>'Lampard', 'Baladas'=>'Jose Torres');
- 
-                 foreach($musica as $tipo=>$artista)
-                     {
-                     echo "Genero Musical:  " . $tipo . " Artista:  " . $artista ."<br>";
-                     }
+            $musica = array('electroica' => 'David Getta', 'Salasa' => 'Marti Almar', 'Rege' => 'Lampard', 'Baladas' => 'Jose Torres');
+
+            foreach ($musica as $tipo => $artista) {
+                echo "Genero Musical:  " . $tipo . " Artista:  " . $artista . "<br>";
+            }
             ?>
         </section>
         <!-- ========== End Array unidimensionales  ========== -->
@@ -390,16 +411,15 @@
                 <h5>Array multidimensionale</h5>
             </div>
             <?php
-                $musica = array('electroica'=>['David Getta', 'Avici'], 'Salasa'=>['Marti',' Almar'],'Rege' =>['Bob marly','Lampard'], 'Baladas'=>['Jose',' Torres']);
- 
-                foreach($musica as $tipo => $artistas)
-                    {
-                    echo "<b>Genero Musical:  " . $tipo. "</b><br>";
-                    foreach($artistas as $i=>$artista){
-                        $i++;
-                        echo "$i .- $artista <br>";
-                    }
-                    }
+            $musica = array('electroica' => ['David Getta', 'Avici'], 'Salasa' => ['Marti', ' Almar'], 'Rege' => ['Bob marly', 'Lampard'], 'Baladas' => ['Jose', ' Torres']);
+
+            foreach ($musica as $tipo => $artistas) {
+                echo "<b>Genero Musical:  " . $tipo . "</b><br>";
+                foreach ($artistas as $i => $artista) {
+                    $i++;
+                    echo "$i .- $artista <br>";
+                }
+            }
             ?>
         </section>
         <!-- ========== End Array multidimensionales ========== -->
